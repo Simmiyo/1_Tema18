@@ -4,6 +4,8 @@
 #include "Clasa_Lista.h"
 #pragma once
 
+class vector_nr_intregi;
+
 class nr_intreg
 {
     bool semn;

@@ -7,7 +7,7 @@ nr_intreg :: nr_intreg()
 
 nr_intreg :: ~nr_intreg()
 {
-    semn =1;
+    semn = 1;
     modul.stergere();
 }
 
@@ -15,24 +15,11 @@ nr_intreg :: nr_intreg(const nr_intreg &original)
 {
     semn = original.semn;
     struct cifra *p = original.modul.unitati;
-    while( p!= NULL)
+    while(p!= NULL)
     {
         modul.adaugare_sf(p->val);
         p = p->urm;
     }
-}
-
-nr_intreg nr_intreg :: operator=(const nr_intreg &original)
-{
-    (*this).modul.stergere();
-    semn = original.semn;
-    struct cifra *p = original.modul.unitati;
-    while( p!= NULL)
-    {
-        modul.adaugare_sf(p->val);
-        p = p->urm;
-    }
-    return *this;
 }
 
 bool nr_intreg :: operator==(const nr_intreg &num)
@@ -51,6 +38,22 @@ bool nr_intreg :: operator==(const nr_intreg &num)
     if((p != NULL && q == NULL) || (p == NULL && q != NULL))
         return 0;
     return 1;
+}
+
+
+nr_intreg nr_intreg :: operator=(const nr_intreg &original)
+{
+    if((*this) == original)
+        return *this;
+    (*this).modul.stergere();
+    semn = original.semn;
+    struct cifra *p = original.modul.unitati;
+    while( p!= NULL)
+    {
+        modul.adaugare_sf(p->val);
+        p = p->urm;
+    }
+    return *this;
 }
 
 istream & operator>>(istream &intrare, nr_intreg &num)
@@ -75,7 +78,7 @@ istream & operator>>(istream &intrare, nr_intreg &num)
         else
         {
             cout<<"Numar incorect. Introduceti alt numar:"<<endl;
-            num.~nr_intreg();
+            num.modul.stergere();
             return intrare>>num;
         }
     }

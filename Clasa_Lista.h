@@ -13,7 +13,6 @@ struct cifra
 };
 
 class nr_intreg;
-class vector_nr_intregi;
 
 class lista
 {
