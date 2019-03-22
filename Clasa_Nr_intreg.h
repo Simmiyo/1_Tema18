@@ -22,6 +22,7 @@ class nr_intreg
     nr_intreg operator-(nr_intreg );
     nr_intreg operator*(nr_intreg &);
     nr_intreg max_abs(nr_intreg &);
+    unsigned short int operator[](int poz);
     friend class vector_nr_intregi;
     friend istream & operator>>(istream &, vector_nr_intregi &);
     friend ostream & operator<<(ostream &, const vector_nr_intregi &);

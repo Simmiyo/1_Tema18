@@ -18,6 +18,7 @@ int main()
     g<<x+y<<endl;
     g<<x-y<<endl;
     g<<x*y<<endl;
+    cout<<x[2]<<endl;
     vector_nr_intregi A(3),B(3);
     f >> A >> B;
     g << A*B << endl;
