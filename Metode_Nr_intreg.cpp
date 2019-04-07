@@ -228,7 +228,7 @@ nr_intreg nr_intreg :: operator-(nr_intreg num)
             while(p != NULL)
             {
                 diferenta.modul.adaugare_sf((p->val + 10 - i) % 10);
-                if(p->val == 0)
+                if(p->val - i < 0)
                     i = 1;
                 else i = 0;
                 p = p->urm;
@@ -275,4 +275,16 @@ nr_intreg nr_intreg :: operator*(nr_intreg &num)
     if(((*this).semn == 0 && num.semn == 1) || ((*this).semn == 1 && num.semn == 0))
         produs.semn = 0;
     return produs;
+}
+unsigned short int nr_intreg :: operator[](int poz)
+{
+    cifra *p = modul.dominanta;
+    while(p != NULL && poz > 1)
+    {
+        p = p->ant;
+        poz--;
+    }
+    if(p != NULL)
+        return p->val;
+    else return 10;
 }
